@@ -13,3 +13,4 @@ The repo is a collection of simple code snippets that I often forget..
 
 ## Misc
 - [Cytoband file parser](https://gist.github.com/julianhess/b2bdb38733f3c61885c2564a17d53c12) *Credit to Julian Hess*
+- [Dummy Bed file generation from fasta.fai (with contig length)](https://gist.github.com/hurrialice/6f5c2dad514840c71081abced4890696)
