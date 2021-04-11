@@ -8,3 +8,4 @@
   - `git submodule -b <branch> add <repo url>` for specific branch
   - `git checkout <branch>` to attach HEAD to submodules
   - `git submodule update --remote`
+  - [completely remove a submodule](https://gist.github.com/myusuf3/7f645819ded92bda6677)
