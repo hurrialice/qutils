@@ -14,6 +14,11 @@ The repo is a collection of simple code snippets that I often forget..
 ## Figures
 - [GaddyGram from aggregated MAF](https://gist.github.com/hurrialice/a01d8c0a758856e2ebac22363db703a1)
 - [Upset plot comparing calls from different sources](https://gist.github.com/hurrialice/43812e5df996c2abce3dd2578cb13d58)
+- Add y=x to existing figure without changing axis
+  ```
+  x = np.linspace(*ax.get_xlim())
+  ax.plot(x, x)
+  ```
 
 ## Interacting with MAF/VCF
 - [Several useful commands with awk/sed/grep](https://gist.github.com/hurrialice/b09d05c7d67cd1f4301ca6c32a223ab5)
