@@ -19,6 +19,8 @@ The repo is a collection of simple code snippets that I often forget..
   x = np.linspace(*ax.get_xlim())
   ax.plot(x, x)
   ```
+- [Q-Q plot](https://gist.github.com/hurrialice/939b1a427e69edb284c26288ae34b1f1)
+- Trace plot
 
 ## Interacting with MAF/VCF
 - [Several useful commands with awk/sed/grep](https://gist.github.com/hurrialice/b09d05c7d67cd1f4301ca6c32a223ab5)
