@@ -25,7 +25,8 @@ The repo is a collection of simple code snippets that I often forget..
 ## Interacting with MAF/VCF
 - [Several useful commands with awk/sed/grep](https://gist.github.com/hurrialice/b09d05c7d67cd1f4301ca6c32a223ab5)
 - [Reheader VCF with another reference fasta index (e.g. different contig names)](http://samtools.github.io/bcftools/bcftools.html#reheader) by `bcftools reheader -f XXX.fasta.fai old.vcf -o new.vcf`
-- [Appending header lines to VCF](http://samtools.github.io/bcftools/bcftools.html#annotate) by `bcftools annotate -h <file>`
+- [Appending header lines to VCF](http://samtools.github.io/bcftools/bcftools.html#annotate) by `bcftools annotate -h <hdr> -a <annot> -s <sample>`
+- Chane sample name of VCF: `bcftools reheader -samples <samples.list>`, as in the order of original VCF
 
 ## IGV
 - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
