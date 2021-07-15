@@ -12,4 +12,5 @@
   - `git submodule update --remote`
   - [completely remove a submodule](https://gist.github.com/myusuf3/7f645819ded92bda6677)
 
-
+3. patch add
+  - `git add -p <>`
