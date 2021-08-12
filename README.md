@@ -23,6 +23,7 @@ The repo is a collection of simple code snippets that I often forget..
 - [Q-Q plot](https://gist.github.com/hurrialice/939b1a427e69edb284c26288ae34b1f1)
 - Trace plot
 - [centering diverging cmap](http://chris35wills.github.io/matplotlib_diverging_colorbar/)
+- [adding hatches to a heatmap/clustermap](https://stackoverflow.com/questions/55285013/adding-hatches-to-seaborn-heatmap-plot); note the use of `np.ma` module!
 
 ## Interacting with MAF/VCF
 - [Several useful commands with awk/sed/grep](https://gist.github.com/hurrialice/b09d05c7d67cd1f4301ca6c32a223ab5)
