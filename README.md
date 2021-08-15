@@ -3,6 +3,7 @@ The repo is a collection of simple code snippets that I often forget..
 ## General Pandas
 - [Assign a column based on multiple conditions](https://gist.github.com/hurrialice/02f0460b88bc7a34b9b73717139c2a74)
 - `x in pd.Series` always returns `False`
+- `pd.Series([True, False, np.nan]).astype(bool)` will turn NA to True
 
 ## Numpy
 - Slicing
