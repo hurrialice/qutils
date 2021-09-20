@@ -33,6 +33,9 @@ The repo is a collection of simple code snippets that I often forget..
 - Chane sample name of VCF: `bcftools reheader -samples <samples.list>`, as in the order of original VCF
 - [bcftools cheatsheet](https://gist.github.com/elowy01/93922762e131d7abd3c7e8e166a74a0b)
 
+## Interacting with BAM/CRAM
+- [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
+- `export GCS_OAUTH_TOKEN=$(gcloud auth application-default print-access-token)`
 
 ## IGV
 - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
