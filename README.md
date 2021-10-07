@@ -36,6 +36,17 @@ The repo is a collection of simple code snippets that I often forget..
 ## Interacting with BAM/CRAM
 - [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
 - `export GCS_OAUTH_TOKEN=$(gcloud auth application-default print-access-token)`
+- `samtools mpileup` regrex patterns:
+  ```
+  pattern_dict = {
+    'insertion': "\+[0-9]+[ACGTNacgtn]+", # no base qual!!
+    'deletion': "-[0-9]+[ACGTNacgtn]+", # no base qual!!
+    'start_of_read' : '\^',# correspondes to mapq of a read
+    'end_of_read': '\$', # no corresponding basequal
+    'refbase': '[.,]',
+    'altbase': '[^0-9][ACGTNacgtn]'
+}
+  ```
 
 ## IGV
 - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
