@@ -14,3 +14,5 @@
 
 3. patch add
   - `git add -p <>`
+
+4. [remove all history concerning one file](https://stackoverflow.com/questions/43762338/how-to-remove-file-from-git-history), when you accidentally pushed some sensitive information
