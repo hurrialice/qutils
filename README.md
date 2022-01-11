@@ -56,3 +56,6 @@ The repo is a collection of simple code snippets that I often forget..
 - [Dummy Bed file generation from fasta.fai (with contig length)](https://gist.github.com/hurrialice/6f5c2dad514840c71081abced4890696)
 - [Kill Vscode remote on host](https://stackoverflow.com/questions/56892931/how-to-kill-vscode-remote-services-on-ubuntu-host) to emulate log out and log back in, otherwise it still runs as a background process
 - [ipdb cheatsheet](https://wangchuan.github.io/coding/2017/07/12/ipdb-cheat-sheet.html)
+- python requests library
+  - [advanced use]('https://docs.python-requests.org/en/latest/user/advanced/')
+  - [pagination example](https://gist.github.com/hurrialice/0366d0d9bf573ec22e97bba3fb39011e) with generator
