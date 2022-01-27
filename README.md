@@ -60,6 +60,7 @@ The repo is a collection of simple code snippets that I often forget..
 - python requests library
   - [advanced use]('https://docs.python-requests.org/en/latest/user/advanced/')
   - [pagination example](https://gist.github.com/hurrialice/0366d0d9bf573ec22e97bba3fb39011e) with generator
-- Mac utils:
-  - [Homebrewing without sudo](https://www.scivision.dev/macos-homebrew-non-sudo/)
-  - 
+- [Homebrewing without sudo](https://www.scivision.dev/macos-homebrew-non-sudo/)
+- Genomics Common Sense
+  - Exome is 1-2% of genome
+  - Length for chr1 is `249,250,621` in hg19; and `248,956,422` in hg38 
