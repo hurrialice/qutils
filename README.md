@@ -33,6 +33,7 @@ The repo is a collection of simple code snippets that I often forget..
 - [Appending header lines to VCF](http://samtools.github.io/bcftools/bcftools.html#annotate) by `bcftools annotate -h <hdr> -a <annot> -s <sample>`
 - Chane sample name of VCF: `bcftools reheader -samples <samples.list>`, as in the order of original VCF
 - [bcftools cheatsheet](https://gist.github.com/elowy01/93922762e131d7abd3c7e8e166a74a0b)
+- convert a site/sample level information from a VCF to a table (note, it is not MAF! so be careful abut the position changes) with [GATK VariantsToTable](https://gist.github.com/hurrialice/333b3936906cb06fef3609331034ec4f)
 
 ## Interacting with BAM/CRAM
 - [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
