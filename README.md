@@ -34,6 +34,20 @@ The repo is a collection of simple code snippets that I often forget..
 - Chane sample name of VCF: `bcftools reheader -samples <samples.list>`, as in the order of original VCF
 - [bcftools cheatsheet](https://gist.github.com/elowy01/93922762e131d7abd3c7e8e166a74a0b)
 - convert a site/sample level information from a VCF to a table (note, it is not MAF! so be careful abut the position changes) with [GATK VariantsToTable](https://gist.github.com/hurrialice/333b3936906cb06fef3609331034ec4f)
+- Matching indel positions between VCF vs MAF
+  ```
+  # insertion
+  ms = vs
+  me = ms + 1
+  mask the first base for (vref, valt)
+  mref,malt = (-,G)
+
+  # deletion
+  ms = vs + 1
+  mask the first base for (vref, valt)
+  malt = '-'
+  me = ms + len(mref) -1
+  ```
 - Working with VCF info flags (binary tag):
   - with `bcftools annotate`, explicitly include an additional column for 1/0/.; where as `.` denotes keeping existing flag
   - with `bcftools annotate`, use `-m <TAG>` to denote the presence of a TAG
