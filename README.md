@@ -34,6 +34,15 @@ The repo is a collection of simple code snippets that I often forget..
 - Chane sample name of VCF: `bcftools reheader -samples <samples.list>`, as in the order of original VCF
 - [bcftools cheatsheet](https://gist.github.com/elowy01/93922762e131d7abd3c7e8e166a74a0b)
 - convert a site/sample level information from a VCF to a table (note, it is not MAF! so be careful abut the position changes) with [GATK VariantsToTable](https://gist.github.com/hurrialice/333b3936906cb06fef3609331034ec4f)
+- Working with VCF info flags (binary tag):
+  - with `bcftools annotate`, explicitly include an additional column for 1/0/.; where as `.` denotes keeping existing flag
+  - with `bcftools annotate`, use `-m <TAG>` to denote the presence of a TAG
+  - Correct header looks like: 
+    ```
+    echo -e "##INFO=<ID=pathogenic_intron,Number=0,Type=Flag,Description="Intronic variants that is marked P/LP from clinvar"" > pathogenic_intron.hdr
+    ```
+  - Filtering by `bcftools filter -i 'pathogenic_intron=1' ` for presence of that tag
+- `bcftools merge` for non-overlapping sample; `bcftools concat` for same set of sample with different regions, regardless of the <chr,pos> order
 
 ## Interacting with BAM/CRAM
 - [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
@@ -65,3 +74,4 @@ The repo is a collection of simple code snippets that I often forget..
 - Genomics Common Sense
   - Exome is 1-2% of genome
   - Length for chr1 is `249,250,621` in hg19; and `248,956,422` in hg38 
+  - [Explaining read flags](https://broadinstitute.github.io/picard/explain-flags.html)
