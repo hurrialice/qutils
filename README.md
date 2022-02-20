@@ -39,24 +39,31 @@ The repo is a collection of simple code snippets that I often forget..
   # insertion
   ms = vs
   me = ms + 1
-  mask the first base for (vref, valt)
+  # mask the first base for (vref, valt)
   mref,malt = (-,G)
 
   # deletion
   ms = vs + 1
-  mask the first base for (vref, valt)
+  # mask the first base for (vref, valt)
   malt = '-'
   me = ms + len(mref) -1
   ```
 - Working with VCF info flags (binary tag):
   - with `bcftools annotate`, explicitly include an additional column for 1/0/.; where as `.` denotes keeping existing flag
   - with `bcftools annotate`, use `-m <TAG>` to denote the presence of a TAG
-  - Correct header looks like: 
+  - Correct header for a binary flag looks like: 
     ```
     echo -e "##INFO=<ID=pathogenic_intron,Number=0,Type=Flag,Description="Intronic variants that is marked P/LP from clinvar"" > pathogenic_intron.hdr
     ```
   - Filtering by `bcftools filter -i 'pathogenic_intron=1' ` for presence of that tag
 - `bcftools merge` for non-overlapping sample; `bcftools concat` for same set of sample with different regions, regardless of the <chr,pos> order
+- VCF <-> BCF
+  - Compress and index a vcf
+    ```
+    bgzip -c file.vcf > file.vcf.gz # or bcftools view file.vcf -Oz -o file.vcf.gz
+    tabix -p vcf file.vcf.gz # or bcftools index file.vcf.gz
+    ```
+  - 
 
 ## Interacting with BAM/CRAM
 - [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
