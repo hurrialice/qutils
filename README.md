@@ -63,7 +63,12 @@ The repo is a collection of simple code snippets that I often forget..
     bgzip -c file.vcf > file.vcf.gz # or bcftools view file.vcf -Oz -o file.vcf.gz
     tabix -p vcf file.vcf.gz # or bcftools index file.vcf.gz
     ```
-  - 
+  - Uncompress
+  - `-O`: Output compressed BCF (b), uncompressed BCF (u), compressed VCF (z), uncompressed VCF (v). Use the -Ou option when piping between bcftools subcommands to speed up performance by removing unnecessary compression/decompression and VCF<->BCF conversion.
+- consensus sequence from VCF
+  ```
+  samtools faidx ref.fa 8:11870-11890 | bcftools consensus in.vcf.gz > out.fa
+  ```
 
 ## Interacting with BAM/CRAM
 - [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
