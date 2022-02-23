@@ -69,6 +69,10 @@ The repo is a collection of simple code snippets that I often forget..
   ```
   samtools faidx ref.fa 8:11870-11890 | bcftools consensus in.vcf.gz > out.fa
   ```
+- filter hom-ref from a VCF (TODO: understand why whatshap outputs those in the first place), gives you any site where at least one sample has an alt.
+  ```
+  bcftools view -i 'GT[*]="alt"' input.vcf
+  ```
 
 ## Interacting with BAM/CRAM
 - [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
