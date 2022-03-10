@@ -26,6 +26,7 @@ The repo is a collection of simple code snippets that I often forget..
 - [centering diverging cmap](http://chris35wills.github.io/matplotlib_diverging_colorbar/)
 - [adding hatches to a heatmap/clustermap](https://stackoverflow.com/questions/55285013/adding-hatches-to-seaborn-heatmap-plot); note the use of `np.ma` module!
 - [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar) 
+- [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
 
 ## Interacting with MAF/VCF
 - [Several useful commands with awk/sed/grep](https://gist.github.com/hurrialice/b09d05c7d67cd1f4301ca6c32a223ab5)
@@ -86,7 +87,6 @@ The repo is a collection of simple code snippets that I often forget..
     'refbase': '[.,]',
     'altbase': '[^0-9][ACGTNacgtn]'
   ```
-
 
 ## IGV
 - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
