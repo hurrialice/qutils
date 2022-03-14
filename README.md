@@ -87,6 +87,7 @@ The repo is a collection of simple code snippets that I often forget..
     'refbase': '[.,]',
     'altbase': '[^0-9][ACGTNacgtn]'
   ```
+- [parsing BQ/MAPQ from samtools view](https://www.biostars.org/p/15953/)
 
 ## IGV
 - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
