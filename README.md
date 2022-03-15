@@ -87,7 +87,8 @@ The repo is a collection of simple code snippets that I often forget..
     'refbase': '[.,]',
     'altbase': '[^0-9][ACGTNacgtn]'
   ```
-- [parsing BQ/MAPQ from samtools view](https://www.biostars.org/p/15953/)
+- [parsing BQ/MAPQ from samtools view](https://www.biostars.org/p/15953/); get max MAPQ with `samtools view ${bam} chr1:20000000-21000000 | awk  'BEGIN{a=   0}{if ($5>0+a) a=$5} END{print a}'`
+
 
 ## IGV
 - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
