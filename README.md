@@ -27,6 +27,7 @@ The repo is a collection of simple code snippets that I often forget..
 - [adding hatches to a heatmap/clustermap](https://stackoverflow.com/questions/55285013/adding-hatches-to-seaborn-heatmap-plot); note the use of `np.ma` module!
 - [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar) 
 - [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
+- [Extendable quick QC plot on tabular metrics file](https://gist.github.com/hurrialice/9771dd82bd334363b8746fdcb91c88cd)
 
 ## Interacting with MAF/VCF
 - [Several useful commands with awk/sed/grep](https://gist.github.com/hurrialice/b09d05c7d67cd1f4301ca6c32a223ab5)
