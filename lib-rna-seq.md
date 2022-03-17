@@ -45,4 +45,5 @@
   - <img width="901" alt="image" src="https://user-images.githubusercontent.com/30106174/158076746-6c45e8ea-e19a-48f8-b542-a4d5954753c4.png">
   - <img width="1250" alt="image" src="https://user-images.githubusercontent.com/30106174/158076840-c6c3c500-63dd-435b-9feb-1dda2bc5bc58.png">
   - [Great notes on strandness of RNA-seq](https://rnabio.org/module-09-appendix/0009/12/01/StrandSettings/)
-
+- Misc debugging tips
+  - [Great notes on % duplicates](http://core-genomics.blogspot.com/2016/05/increased-read-duplication-on-patterned.html)
