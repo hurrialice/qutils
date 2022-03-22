@@ -1,110 +1,113 @@
 The repo is a collection of simple code snippets that I often forget..
 
-## General Pandas
-- [Assign a column based on multiple conditions](https://gist.github.com/hurrialice/02f0460b88bc7a34b9b73717139c2a74)
-- `x in pd.Series` always returns `False`
-- `pd.Series([True, False, np.nan]).astype(bool)` will turn NA to True
+## General python
+  - [ipdb cheatsheet](https://wangchuan.github.io/coding/2017/07/12/ipdb-cheat-sheet.html)
+  - [Conda basic commands](https://gist.github.com/hurrialice/f3118ce4d0472f7ba8d6cbe20e50c81a); [conda config with basic R4 + bioconductor](https://gist.github.com/hurrialice/7c6ebb6514ba8c39095cc28f2374ec7b)
+  - python requests library
+    - [advanced use](https://docs.python-requests.org/en/latest/user/advanced/)
+    - [pagination example](https://gist.github.com/hurrialice/0366d0d9bf573ec22e97bba3fb39011e) with generator
+### Pandas
+  - [Assign a column based on multiple conditions](https://gist.github.com/hurrialice/02f0460b88bc7a34b9b73717139c2a74)
+  - `x in pd.Series` always returns `False`
+  - `pd.Series([True, False, np.nan]).astype(bool)` will turn NA to True
 
-## Numpy
-- Slicing
-  - [multiple slicing solutions](https://stackoverflow.com/questions/43413582/selecting-multiple-slices-from-a-numpy-array-at-once)
-  - [More examples on choosing strides and shape](https://towardsdatascience.com/advanced-numpy-master-stride-tricks-with-25-illustrated-exercises-923a9393ab20)
-  - [Concating multiple slices with `np.r_`](https://stackoverflow.com/questions/44375899/select-specific-columns-in-numpy-array-using-colon-notation)
+### Numpy
+  - Slicing
+    - [multiple slicing solutions](https://stackoverflow.com/questions/43413582/selecting-multiple-slices-from-a-numpy-array-at-once)
+    - [More examples on choosing strides and shape](https://towardsdatascience.com/advanced-numpy-master-stride-tricks-with-25-illustrated-exercises-923a9393ab20)
+    - [Concating multiple slices with `np.r_`](https://stackoverflow.com/questions/44375899/select-specific-columns-in-numpy-array-using-colon-notation)
+  - [Broadcasting](https://numpy.org/doc/stable/user/basics.broadcasting.html)
+
+### Matplotlib
+  - [GaddyGram from aggregated MAF](https://gist.github.com/hurrialice/a01d8c0a758856e2ebac22363db703a1)
+  - [Upset plot comparing calls from different sources](https://gist.github.com/hurrialice/43812e5df996c2abce3dd2578cb13d58)
+  - Add y=x to existing figure without changing axis
+    ```
+    x = np.linspace(*ax.get_xlim())
+    ax.plot(x, x)
+    ```
+  - [Q-Q plot](https://gist.github.com/hurrialice/939b1a427e69edb284c26288ae34b1f1)
+  - Trace plot
+  - [centering diverging cmap](http://chris35wills.github.io/matplotlib_diverging_colorbar/)
+  - [adding hatches to a heatmap/clustermap](https://stackoverflow.com/questions/55285013/adding-hatches-to-seaborn-heatmap-plot); note the use of `np.ma` module!
+  - [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar) 
+  - [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
+  - [Extendable quick QC plot on tabular metrics file](https://gist.github.com/hurrialice/9771dd82bd334363b8746fdcb91c88cd)
+
+## NGS manipulation
+
+  - [Cytoband file parser](https://gist.github.com/julianhess/b2bdb38733f3c61885c2564a17d53c12) *Credit to Julian Hess*
   
-- Broadcasting
-
-## Figures
-- [GaddyGram from aggregated MAF](https://gist.github.com/hurrialice/a01d8c0a758856e2ebac22363db703a1)
-- [Upset plot comparing calls from different sources](https://gist.github.com/hurrialice/43812e5df996c2abce3dd2578cb13d58)
-- Add y=x to existing figure without changing axis
-  ```
-  x = np.linspace(*ax.get_xlim())
-  ax.plot(x, x)
-  ```
-- [Q-Q plot](https://gist.github.com/hurrialice/939b1a427e69edb284c26288ae34b1f1)
-- Trace plot
-- [centering diverging cmap](http://chris35wills.github.io/matplotlib_diverging_colorbar/)
-- [adding hatches to a heatmap/clustermap](https://stackoverflow.com/questions/55285013/adding-hatches-to-seaborn-heatmap-plot); note the use of `np.ma` module!
-- [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar) 
-- [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
-- [Extendable quick QC plot on tabular metrics file](https://gist.github.com/hurrialice/9771dd82bd334363b8746fdcb91c88cd)
-
-## Interacting with MAF/VCF
-- [Several useful commands with awk/sed/grep](https://gist.github.com/hurrialice/b09d05c7d67cd1f4301ca6c32a223ab5)
-- [Reheader VCF with another reference fasta index (e.g. different contig names)](http://samtools.github.io/bcftools/bcftools.html#reheader) by `bcftools reheader -f XXX.fasta.fai old.vcf -o new.vcf`
-- [Appending header lines to VCF](http://samtools.github.io/bcftools/bcftools.html#annotate) by `bcftools annotate -h <hdr> -a <annot> -s <sample>`
-- Chane sample name of VCF: `bcftools reheader -samples <samples.list>`, as in the order of original VCF
-- [bcftools cheatsheet](https://gist.github.com/elowy01/93922762e131d7abd3c7e8e166a74a0b)
-- convert a site/sample level information from a VCF to a table (note, it is not MAF! so be careful abut the position changes) with [GATK VariantsToTable](https://gist.github.com/hurrialice/333b3936906cb06fef3609331034ec4f)
-- Matching indel positions between VCF vs MAF
-  ```
-  # insertion
-  ms = vs
-  me = ms + 1
-  # mask the first base for (vref, valt)
-  mref,malt = (-,G)
-
-  # deletion
-  ms = vs + 1
-  # mask the first base for (vref, valt)
-  malt = '-'
-  me = ms + len(mref) -1
-  ```
-- Working with VCF info flags (binary tag):
-  - with `bcftools annotate`, explicitly include an additional column for 1/0/.; where as `.` denotes keeping existing flag
-  - with `bcftools annotate`, use `-m <TAG>` to denote the presence of a TAG
-  - Correct header for a binary flag looks like: 
+### Variants (MAF/VCF)
+  - [Several useful commands with awk/sed/grep](https://gist.github.com/hurrialice/b09d05c7d67cd1f4301ca6c32a223ab5)
+  - [Reheader VCF with another reference fasta index (e.g. different contig names)](http://samtools.github.io/bcftools/bcftools.html#reheader) by `bcftools reheader -f XXX.fasta.fai old.vcf -o new.vcf`
+  - [Appending header lines to VCF](http://samtools.github.io/bcftools/bcftools.html#annotate) by `bcftools annotate -h <hdr> -a <annot> -s <sample>`
+  - Chane sample name of VCF: `bcftools reheader -samples <samples.list>`, as in the order of original VCF
+  - [bcftools cheatsheet](https://gist.github.com/elowy01/93922762e131d7abd3c7e8e166a74a0b)
+  - convert a site/sample level information from a VCF to a table (note, it is not MAF! so be careful abut the position changes) with [GATK VariantsToTable](https://gist.github.com/hurrialice/333b3936906cb06fef3609331034ec4f)
+  - Matching indel positions between VCF vs MAF
     ```
-    echo -e "##INFO=<ID=pathogenic_intron,Number=0,Type=Flag,Description="Intronic variants that is marked P/LP from clinvar"" > pathogenic_intron.hdr
-    ```
-  - Filtering by `bcftools filter -i 'pathogenic_intron=1' ` for presence of that tag
-- `bcftools merge` for non-overlapping sample; `bcftools concat` for same set of sample with different regions, regardless of the <chr,pos> order
-- VCF <-> BCF
-  - Compress and index a vcf
-    ```
-    bgzip -c file.vcf > file.vcf.gz # or bcftools view file.vcf -Oz -o file.vcf.gz
-    tabix -p vcf file.vcf.gz # or bcftools index file.vcf.gz
-    ```
-  - Uncompress
-  - `-O`: Output compressed BCF (b), uncompressed BCF (u), compressed VCF (z), uncompressed VCF (v). Use the -Ou option when piping between bcftools subcommands to speed up performance by removing unnecessary compression/decompression and VCF<->BCF conversion.
-- consensus sequence from VCF
-  ```
-  samtools faidx ref.fa 8:11870-11890 | bcftools consensus in.vcf.gz > out.fa
-  ```
-- filter hom-ref from a VCF (TODO: understand why whatshap outputs those in the first place), gives you any site where at least one sample has an alt.
-  ```
-  bcftools view -i 'GT[*]="alt"' input.vcf
-  ```
+    # insertion
+    ms = vs
+    me = ms + 1
+    # mask the first base for (vref, valt)
+    mref,malt = (-,G)
 
-## Interacting with BAM/CRAM
-- [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
-- `export GCS_OAUTH_TOKEN=$(gcloud auth application-default print-access-token)`
-- `samtools mpileup` [regrex patterns in python](https://gist.github.com/hurrialice/3cf2c6888cecb3125cc4298eadf6c50a):
-  ```
-    'insertion': "\+[0-9]+[ACGTNacgtn]+", # no base qual!!
-    'deletion': "-[0-9]+[ACGTNacgtn]+", # no base qual!!
-    'start_of_read' : '\^',# correspondes to mapq of a read
-    'end_of_read': '\$', # no corresponding basequal
-    'refbase': '[.,]',
-    'altbase': '[^0-9][ACGTNacgtn]'
-  ```
-- [parsing BQ/MAPQ from samtools view](https://www.biostars.org/p/15953/); get max MAPQ with `samtools view ${bam} chr1:20000000-21000000 | awk  'BEGIN{a=   0}{if ($5>0+a) a=$5} END{print a}'`
+    # deletion
+    ms = vs + 1
+    # mask the first base for (vref, valt)
+    malt = '-'
+    me = ms + len(mref) -1
+    ```
+  - Working with VCF info flags (binary tag):
+    - with `bcftools annotate`, explicitly include an additional column for 1/0/.; where as `.` denotes keeping existing flag
+    - with `bcftools annotate`, use `-m <TAG>` to denote the presence of a TAG
+    - Correct header for a binary flag looks like: 
+      ```
+      echo -e "##INFO=<ID=pathogenic_intron,Number=0,Type=Flag,Description="Intronic variants that is marked P/LP from clinvar"" > pathogenic_intron.hdr
+      ```
+    - Filtering by `bcftools filter -i 'pathogenic_intron=1' ` for presence of that tag
+  - `bcftools merge` for non-overlapping sample; `bcftools concat` for identical order of sample with different regions / variant types (different FORMAT headers will be properly handled too) , however output needs to be sorted
+  - Compression (%TODO: this part is inaccurate!!! and needs more work)
+    - Compress and index a vcf
+      ```
+      bgzip -c file.vcf > file.vcf.gz # or bcftools view file.vcf -Oz -o file.vcf.gz
+      tabix -p vcf file.vcf.gz # or bcftools index file.vcf.gz
+      ```
+    - `bcftools convert`
+    - `-O`: Output compressed BCF (b), uncompressed BCF (u), compressed VCF (z), uncompressed VCF (v). Use the -Ou option when piping between bcftools subcommands to speed up performance by removing unnecessary compression/decompression and VCF<->BCF conversion.
+  - consensus sequence from VCF
+    ```
+    samtools faidx ref.fa 8:11870-11890 | bcftools consensus in.vcf.gz > out.fa
+    ```
+  - filter hom-ref from a VCF (TODO: understand why whatshap outputs those in the first place), gives you any site where at least one sample has an alt.
+    ```
+    bcftools view -i 'GT[*]="alt"' input.vcf
+    ```
+
+## Alignments (BAM/CRAM)
+  - [Explaining read flags](https://broadinstitute.github.io/picard/explain-flags.html)
+  - [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
+  - `export GCS_OAUTH_TOKEN=$(gcloud auth application-default print-access-token)` so that samtools will stream `gs://`
+  - Note that `-r` in `samtools view` denotes read group instead of region. Be aware...
+  - `samtools mpileup` [regrex patterns in python](https://gist.github.com/hurrialice/3cf2c6888cecb3125cc4298eadf6c50a):
+    ```
+      'insertion': "\+[0-9]+[ACGTNacgtn]+", # no base qual!!
+      'deletion': "-[0-9]+[ACGTNacgtn]+", # no base qual!!
+      'start_of_read' : '\^',# correspondes to mapq of a read
+      'end_of_read': '\$', # no corresponding basequal
+      'refbase': '[.,]',
+      'altbase': '[^0-9][ACGTNacgtn]'
+    ```
+  - [parsing BQ/MAPQ from samtools view](https://www.biostars.org/p/15953/); get max MAPQ with `samtools view ${bam} chr1:20000000-21000000 | awk  'BEGIN{a=   0}{if ($5>0+a) a=$5} END{print a}'`
 
 
 ## IGV
-- [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
+  - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
+  - [visualizing Pacbio long reads in IGV](https://www.youtube.com/watch?v=nLpmeD57ToA)
+  - [Setting up AWS S3 to IGV](https://umccr.org/blog/igv-amazon-backend-setup/)
 
 ## Misc
-- [Cytoband file parser](https://gist.github.com/julianhess/b2bdb38733f3c61885c2564a17d53c12) *Credit to Julian Hess*
-- [Dummy Bed file generation from fasta.fai (with contig length)](https://gist.github.com/hurrialice/6f5c2dad514840c71081abced4890696)
-- [Kill Vscode remote on host](https://stackoverflow.com/questions/56892931/how-to-kill-vscode-remote-services-on-ubuntu-host) to emulate log out and log back in, otherwise it still runs as a background process
-- [ipdb cheatsheet](https://wangchuan.github.io/coding/2017/07/12/ipdb-cheat-sheet.html)
-- python requests library
-  - [advanced use]('https://docs.python-requests.org/en/latest/user/advanced/')
-  - [pagination example](https://gist.github.com/hurrialice/0366d0d9bf573ec22e97bba3fb39011e) with generator
-- [Homebrewing without sudo](https://www.scivision.dev/macos-homebrew-non-sudo/)
-- [Conda basic commands](https://gist.github.com/hurrialice/f3118ce4d0472f7ba8d6cbe20e50c81a); [conda config with basic R4 + bioconductor](https://gist.github.com/hurrialice/7c6ebb6514ba8c39095cc28f2374ec7b)
-- Genomics Common Sense
-  - Exome is 1-2% of genome
+  - [Kill Vscode remote on host](https://stackoverflow.com/questions/56892931/how-to-kill-vscode-remote-services-on-ubuntu-host) to emulate log out and log back in, otherwise it still runs as a background process
+  - [Homebrewing without sudo](https://www.scivision.dev/macos-homebrew-non-sudo/)
   - Length for chr1 is `249,250,621` in hg19; and `248,956,422` in hg38 
-  - [Explaining read flags](https://broadinstitute.github.io/picard/explain-flags.html)
