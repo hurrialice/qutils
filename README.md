@@ -8,6 +8,7 @@ The repo is a collection of simple code snippets that I often forget..
     - [pagination example](https://gist.github.com/hurrialice/0366d0d9bf573ec22e97bba3fb39011e) with generator
 ### Pandas
   - [Assign a column based on multiple conditions](https://gist.github.com/hurrialice/02f0460b88bc7a34b9b73717139c2a74)
+  - TODO: taking care of indices during merge / concat operations
   - `x in pd.Series` always returns `False`
   - `pd.Series([True, False, np.nan]).astype(bool)` will turn NA to True
 
@@ -27,10 +28,9 @@ The repo is a collection of simple code snippets that I often forget..
     ax.plot(x, x)
     ```
   - [Q-Q plot](https://gist.github.com/hurrialice/939b1a427e69edb284c26288ae34b1f1)
-  - Trace plot
   - [centering diverging cmap](http://chris35wills.github.io/matplotlib_diverging_colorbar/)
   - [adding hatches to a heatmap/clustermap](https://stackoverflow.com/questions/55285013/adding-hatches-to-seaborn-heatmap-plot); note the use of `np.ma` module!
-  - [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar) 
+  - [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar). If to draw a scatterplot with categorized colors from a column, just use `col.map(color_dict)` in which `color_dict` is a preset mapping of colors, usually taking from company's visual guide. 
   - [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
   - [Extendable quick QC plot on tabular metrics file](https://gist.github.com/hurrialice/9771dd82bd334363b8746fdcb91c88cd)
 
@@ -42,7 +42,7 @@ The repo is a collection of simple code snippets that I often forget..
   - [Several useful commands with awk/sed/grep](https://gist.github.com/hurrialice/b09d05c7d67cd1f4301ca6c32a223ab5)
   - [Reheader VCF with another reference fasta index (e.g. different contig names)](http://samtools.github.io/bcftools/bcftools.html#reheader) by `bcftools reheader -f XXX.fasta.fai old.vcf -o new.vcf`
   - [Appending header lines to VCF](http://samtools.github.io/bcftools/bcftools.html#annotate) by `bcftools annotate -h <hdr> -a <annot> -s <sample>`
-  - Chane sample name of VCF: `bcftools reheader -samples <samples.list>`, as in the order of original VCF
+  - Change sample name of VCF: `bcftools reheader -samples <samples.list>`, as in the order of original VCF
   - [bcftools cheatsheet](https://gist.github.com/elowy01/93922762e131d7abd3c7e8e166a74a0b)
   - convert a site/sample level information from a VCF to a table (note, it is not MAF! so be careful abut the position changes) with [GATK VariantsToTable](https://gist.github.com/hurrialice/333b3936906cb06fef3609331034ec4f)
   - Matching indel positions between VCF vs MAF
@@ -67,8 +67,8 @@ The repo is a collection of simple code snippets that I often forget..
       echo -e "##INFO=<ID=pathogenic_intron,Number=0,Type=Flag,Description="Intronic variants that is marked P/LP from clinvar"" > pathogenic_intron.hdr
       ```
     - Filtering by `bcftools filter -i 'pathogenic_intron=1' ` for presence of that tag
-  - `bcftools merge` for non-overlapping sample; `bcftools concat` for identical order of sample with different regions / variant types (different FORMAT headers will be properly handled too) , however output needs to be sorted
-  - Compression (%TODO: this part is inaccurate!!! and needs more work)
+  - `bcftools merge` for non-overlapping sample (be careful with [FILTER info loss](https://github.com/samtools/bcftools/issues/920)); `bcftools concat` for identical order of sample with different regions / variant types (different FORMAT headers will be properly handled too) , however output needs to be sorted
+  - Compression (TODO: this part is inaccurate!!! and needs more work)
     - Compress and index a vcf
       ```
       bgzip -c file.vcf > file.vcf.gz # or bcftools view file.vcf -Oz -o file.vcf.gz
@@ -76,7 +76,7 @@ The repo is a collection of simple code snippets that I often forget..
       ```
     - `bcftools convert`
     - `-O`: Output compressed BCF (b), uncompressed BCF (u), compressed VCF (z), uncompressed VCF (v). Use the -Ou option when piping between bcftools subcommands to speed up performance by removing unnecessary compression/decompression and VCF<->BCF conversion.
-  - consensus sequence from VCF
+  - consensus sequence from VCF, usually better to have input vcf normalized (indel left aligned with `bcftools norm`)
     ```
     samtools faidx ref.fa 8:11870-11890 | bcftools consensus in.vcf.gz > out.fa
     ```
@@ -85,8 +85,9 @@ The repo is a collection of simple code snippets that I often forget..
     bcftools view -i 'GT[*]="alt"' input.vcf
     ```
 
-## Alignments (BAM/CRAM)
+### Alignments (BAM/CRAM)
   - [Explaining read flags](https://broadinstitute.github.io/picard/explain-flags.html)
+  - Filtering by read tag with `samtools view -d TAG:VAL` or `samtools view -d TAG` for binary flag
   - [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
   - `export GCS_OAUTH_TOKEN=$(gcloud auth application-default print-access-token)` so that samtools will stream `gs://`
   - Note that `-r` in `samtools view` denotes read group instead of region. Be aware...
@@ -99,13 +100,17 @@ The repo is a collection of simple code snippets that I often forget..
       'refbase': '[.,]',
       'altbase': '[^0-9][ACGTNacgtn]'
     ```
-  - [parsing BQ/MAPQ from samtools view](https://www.biostars.org/p/15953/); get max MAPQ with `samtools view ${bam} chr1:20000000-21000000 | awk  'BEGIN{a=   0}{if ($5>0+a) a=$5} END{print a}'`
-
+  - [parsing outputs from samtools view](https://www.biostars.org/p/15953/), however inflating BAM should generally be avoided
+    - <img width="667" alt="image" src="https://user-images.githubusercontent.com/30106174/159592863-b68a58e1-3f55-47d5-b01d-d453858a9236.png"> 
+    - Max MAPQ with `samtools view ${bam} chr1:20000000-21000000 | awk  'BEGIN{a=   0}{if ($5>0+a) a=$5} END{print a}'`
+    - Mean MAPQ with `samtools view aln.bam chr22:20000000-21000000 | awk '{sum+=$5} END { print "Mean MAPQ =",sum/NR}'`
+  - TODO: curl only a subset of a (super-large) BAM by region with BAI
 
 ## IGV
   - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
   - [visualizing Pacbio long reads in IGV](https://www.youtube.com/watch?v=nLpmeD57ToA)
-  - [Setting up AWS S3 to IGV](https://umccr.org/blog/igv-amazon-backend-setup/)
+  - TODO: linked-reads display 
+  - TODO: [Setting up AWS S3 to IGV](https://umccr.org/blog/igv-amazon-backend-setup/)
 
 ## Misc
   - [Kill Vscode remote on host](https://stackoverflow.com/questions/56892931/how-to-kill-vscode-remote-services-on-ubuntu-host) to emulate log out and log back in, otherwise it still runs as a background process
