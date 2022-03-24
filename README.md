@@ -44,7 +44,7 @@ The repo is a collection of simple code snippets that I often forget..
   - [Appending header lines to VCF](http://samtools.github.io/bcftools/bcftools.html#annotate) by `bcftools annotate -h <hdr> -a <annot> -s <sample>`
   - Change sample name of VCF: `bcftools reheader -samples <samples.list>`, as in the order of original VCF
   - [bcftools cheatsheet](https://gist.github.com/elowy01/93922762e131d7abd3c7e8e166a74a0b)
-  - convert a site/sample level information from a VCF to a table (note, it is not MAF! so be careful abut the position changes) with [GATK VariantsToTable](https://gist.github.com/hurrialice/333b3936906cb06fef3609331034ec4f)
+  - convert a site/sample level information from a VCF to a table (note, it is not MAF! so be careful abut the position changes) with [GATK VariantsToTable](https://gist.github.com/hurrialice/333b3936906cb06fef3609331034ec4f), or [bcftools query](https://samtools.github.io/bcftools/howtos/query.html) with `-f`. Both ways work to tabulate info/format fields and can be piped to `awk`
   - Matching indel positions between VCF vs MAF
     ```
     # insertion
@@ -88,10 +88,9 @@ The repo is a collection of simple code snippets that I often forget..
 ### Alignments (BAM/CRAM)
   - [Explaining read flags](https://broadinstitute.github.io/picard/explain-flags.html)
   - Filtering by read tag with `samtools view -d TAG:VAL` or `samtools view -d TAG` for binary flag
-  - [samtools mpileup](https://cloud.tencent.com/developer/article/1441634)
   - `export GCS_OAUTH_TOKEN=$(gcloud auth application-default print-access-token)` so that samtools will stream `gs://`
   - Note that `-r` in `samtools view` denotes read group instead of region. Be aware...
-  - `samtools mpileup` [regrex patterns in python](https://gist.github.com/hurrialice/3cf2c6888cecb3125cc4298eadf6c50a):
+  - [samtools mpileup]((https://cloud.tencent.com/developer/article/1441634)) with [regrex patterns in python](https://gist.github.com/hurrialice/3cf2c6888cecb3125cc4298eadf6c50a):
     ```
       'insertion': "\+[0-9]+[ACGTNacgtn]+", # no base qual!!
       'deletion': "-[0-9]+[ACGTNacgtn]+", # no base qual!!
@@ -104,6 +103,7 @@ The repo is a collection of simple code snippets that I often forget..
     - <img width="667" alt="image" src="https://user-images.githubusercontent.com/30106174/159592863-b68a58e1-3f55-47d5-b01d-d453858a9236.png"> 
     - Max MAPQ with `samtools view ${bam} chr1:20000000-21000000 | awk  'BEGIN{a=   0}{if ($5>0+a) a=$5} END{print a}'`
     - Mean MAPQ with `samtools view aln.bam chr22:20000000-21000000 | awk '{sum+=$5} END { print "Mean MAPQ =",sum/NR}'`
+    - [bioawk](https://github.com/lh3/bioawk) functions similar to `bcftools query`
   - TODO: curl only a subset of a (super-large) BAM by region with BAI
 
 ## IGV
