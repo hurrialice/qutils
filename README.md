@@ -4,18 +4,11 @@ The repo is a collection of simple code snippets that I often forget..
   - [ipdb cheatsheet](https://wangchuan.github.io/coding/2017/07/12/ipdb-cheat-sheet.html)
   - [Conda basic commands](https://gist.github.com/hurrialice/f3118ce4d0472f7ba8d6cbe20e50c81a); [conda config with basic R4 + bioconductor](https://gist.github.com/hurrialice/7c6ebb6514ba8c39095cc28f2374ec7b)
   - Enable `%%R` magic by `%load_ext rpy2.ipython`; more on [rmagic](https://ipython.org/ipython-doc/2/config/extensions/rmagic.html)
-    - Example ipynb codeblock for annotating ensembl gene chromosome location :sleepy:
-```
-%%R -i dedf -o annot_chr
-library(biomaRt)
-ensembl <- useMart("ensembl",dataset="hsapiens_gene_ensembl")
-columns(ensembl)
-annot_chr = select(ensembl, keys=dedf[["gene_id"]], columns=c('ensembl_gene_id_version','chromosome_name'),
-  keytype='ensembl_gene_id_version')
-```
+    - [Useful Bioconductor utilities](https://gist.github.com/hurrialice/9de64bbccfdc96a1ed761f7fee4b40b7) :sleepy:
   - python requests library
     - [advanced use](https://docs.python-requests.org/en/latest/user/advanced/)
     - [pagination example](https://gist.github.com/hurrialice/0366d0d9bf573ec22e97bba3fb39011e) with generator
+    - 
 ### Pandas
   - [Assign a column based on multiple conditions](https://gist.github.com/hurrialice/02f0460b88bc7a34b9b73717139c2a74)
   - TODO: taking care of indices during merge / concat operations
@@ -43,6 +36,13 @@ annot_chr = select(ensembl, keys=dedf[["gene_id"]], columns=c('ensembl_gene_id_v
   - [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar). If to draw a scatterplot with categorized colors from a column, just use `col.map(color_dict)` in which `color_dict` is a preset mapping of colors, usually taking from [company's visual guide](https://illumina-playbook.webflow.io/visual-system#color). 
   - [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
   - [Extendable quick QC plot on tabular metrics file](https://gist.github.com/hurrialice/9771dd82bd334363b8746fdcb91c88cd)
+
+## General R (to be filled)
+  - [Vannila R example for several statistical tests](https://gist.github.com/hurrialice/75ec1c321132ae052bce76a89ab9acb0), proficient use of `lapply` families, `split`, `unnest`, `Map`.
+  - R stats functions, different glm designs
+  - Tidyverse family of libraries (`dplyr`, `purrr`, ...)
+  - `SummerizedExpriments` for efficient organization of assays, other reliable `Bioconductor` packages
+  - `ggplot2` family of bioinformatics related plotting
 
 ## NGS manipulation
 
