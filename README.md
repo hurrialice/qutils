@@ -3,6 +3,16 @@ The repo is a collection of simple code snippets that I often forget..
 ## General python
   - [ipdb cheatsheet](https://wangchuan.github.io/coding/2017/07/12/ipdb-cheat-sheet.html)
   - [Conda basic commands](https://gist.github.com/hurrialice/f3118ce4d0472f7ba8d6cbe20e50c81a); [conda config with basic R4 + bioconductor](https://gist.github.com/hurrialice/7c6ebb6514ba8c39095cc28f2374ec7b)
+  - Enable `%%R` magic by `%load_ext rpy2.ipython`; more on [rmagic](https://ipython.org/ipython-doc/2/config/extensions/rmagic.html)
+    - Example ipynb codeblock for annotating ensembl gene chromosome location :sleepy:
+```
+%%R -i dedf -o annot_chr
+library(biomaRt)
+ensembl <- useMart("ensembl",dataset="hsapiens_gene_ensembl")
+columns(ensembl)
+annot_chr = select(ensembl, keys=dedf[["gene_id"]], columns=c('ensembl_gene_id_version','chromosome_name'),
+  keytype='ensembl_gene_id_version')
+```
   - python requests library
     - [advanced use](https://docs.python-requests.org/en/latest/user/advanced/)
     - [pagination example](https://gist.github.com/hurrialice/0366d0d9bf573ec22e97bba3fb39011e) with generator
@@ -30,7 +40,7 @@ The repo is a collection of simple code snippets that I often forget..
   - [Q-Q plot](https://gist.github.com/hurrialice/939b1a427e69edb284c26288ae34b1f1)
   - [centering diverging cmap](http://chris35wills.github.io/matplotlib_diverging_colorbar/)
   - [adding hatches to a heatmap/clustermap](https://stackoverflow.com/questions/55285013/adding-hatches-to-seaborn-heatmap-plot); note the use of `np.ma` module!
-  - [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar). If to draw a scatterplot with categorized colors from a column, just use `col.map(color_dict)` in which `color_dict` is a preset mapping of colors, usually taking from company's visual guide. 
+  - [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar). If to draw a scatterplot with categorized colors from a column, just use `col.map(color_dict)` in which `color_dict` is a preset mapping of colors, usually taking from [company's visual guide](https://illumina-playbook.webflow.io/visual-system#color). 
   - [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
   - [Extendable quick QC plot on tabular metrics file](https://gist.github.com/hurrialice/9771dd82bd334363b8746fdcb91c88cd)
 
@@ -76,7 +86,7 @@ The repo is a collection of simple code snippets that I often forget..
       ```
     - `bcftools convert`
     - `-O`: Output compressed BCF (b), uncompressed BCF (u), compressed VCF (z), uncompressed VCF (v). Use the -Ou option when piping between bcftools subcommands to speed up performance by removing unnecessary compression/decompression and VCF<->BCF conversion.
-  - consensus sequence from VCF, usually better to have input vcf normalized (indel left aligned with `bcftools norm`)
+  - consensus sequence from VCF, usually better to have input vcf normalized (indel left aligned with `bcftools norm --fasta-ref`)
     ```
     samtools faidx ref.fa 8:11870-11890 | bcftools consensus in.vcf.gz > out.fa
     ```
@@ -91,14 +101,6 @@ The repo is a collection of simple code snippets that I often forget..
   - `export GCS_OAUTH_TOKEN=$(gcloud auth application-default print-access-token)` so that samtools will stream `gs://`
   - Note that `-r` in `samtools view` denotes read group instead of region. Be aware...
   - [samtools mpileup]((https://cloud.tencent.com/developer/article/1441634)) with [regrex patterns in python](https://gist.github.com/hurrialice/3cf2c6888cecb3125cc4298eadf6c50a):
-    ```
-      'insertion': "\+[0-9]+[ACGTNacgtn]+", # no base qual!!
-      'deletion': "-[0-9]+[ACGTNacgtn]+", # no base qual!!
-      'start_of_read' : '\^',# correspondes to mapq of a read
-      'end_of_read': '\$', # no corresponding basequal
-      'refbase': '[.,]',
-      'altbase': '[^0-9][ACGTNacgtn]'
-    ```
   - [parsing outputs from samtools view](https://www.biostars.org/p/15953/), however inflating BAM should generally be avoided
     - <img width="667" alt="image" src="https://user-images.githubusercontent.com/30106174/159592863-b68a58e1-3f55-47d5-b01d-d453858a9236.png"> 
     - Max MAPQ with `samtools view ${bam} chr1:20000000-21000000 | awk  'BEGIN{a=   0}{if ($5>0+a) a=$5} END{print a}'`
