@@ -47,6 +47,7 @@ The repo is a collection of simple code snippets that I often forget..
 ## NGS manipulation
 
   - [Cytoband file parser](https://gist.github.com/julianhess/b2bdb38733f3c61885c2564a17d53c12) *Credit to Julian Hess*
+  - Simulate reads from haplotig with [NEAT](https://github.com/ncsa/NEAT) from give error model
   
 ### Variants (MAF/VCF)
   - [Several useful commands with awk/sed/grep](https://gist.github.com/hurrialice/b09d05c7d67cd1f4301ca6c32a223ab5)
@@ -95,6 +96,7 @@ The repo is a collection of simple code snippets that I often forget..
     ```
     bcftools view -i 'GT[*]="alt"' input.vcf
     ```
+  - [MiniBAM](https://github.com/walaj/VariantBam)
 
 ### Alignments (BAM/CRAM)
   - [Explaining read flags](https://broadinstitute.github.io/picard/explain-flags.html)
@@ -111,11 +113,12 @@ The repo is a collection of simple code snippets that I often forget..
 
 ## IGV
   - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
-  - [visualizing Pacbio long reads in IGV](https://www.youtube.com/watch?v=nLpmeD57ToA)
+  - [visualizing Pacbio long reads in IGV](https://www.youtube.com/watch?v=nLpmeD57ToA), alternatively [Ribbon](https://genomeribbon.com/)
   - TODO: linked-reads display 
   - TODO: [Setting up AWS S3 to IGV](https://umccr.org/blog/igv-amazon-backend-setup/)
 
 ## Misc
   - [Kill Vscode remote on host](https://stackoverflow.com/questions/56892931/how-to-kill-vscode-remote-services-on-ubuntu-host) to emulate log out and log back in, otherwise it still runs as a background process
   - [Homebrewing without sudo](https://www.scivision.dev/macos-homebrew-non-sudo/)
+  - [Missing link to libcrypto openssl on OSX](https://gist.github.com/aklap/e885721ef15c8668ed0a1dd64d2ea1a7)
   - Length for chr1 is `249,250,621` in hg19; and `248,956,422` in hg38 
