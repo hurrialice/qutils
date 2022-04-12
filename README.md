@@ -78,19 +78,20 @@ The repo is a collection of simple code snippets that I often forget..
       ```
     - Filtering by `bcftools filter -i 'pathogenic_intron=1' ` for presence of that tag
   - `bcftools merge` for non-overlapping sample (be careful with [FILTER info loss](https://github.com/samtools/bcftools/issues/920)); `bcftools concat` for identical order of sample with different regions / variant types (different FORMAT headers will be properly handled too) , however output needs to be sorted
-  - Compression (TODO: this part is inaccurate!!! and needs more work)
+  - [GVCF](https://gatk.broadinstitute.org/hc/en-us/articles/360035531812-GVCF-Genomic-Variant-Call-Format): The key difference between a regular VCF and a GVCF is that the GVCF has records for all sites, whether there is a variant call there or not. Related GATK [Joint calling](https://gatk.broadinstitute.org/hc/en-us/articles/360035890431-The-logic-of-joint-calling-for-germline-short-variants) framework
+  - Compression (TODO: this part needs more work)
     - Compress and index a vcf
       ```
       bgzip -c file.vcf > file.vcf.gz # or bcftools view file.vcf -Oz -o file.vcf.gz
       tabix -p vcf file.vcf.gz # or bcftools index file.vcf.gz
       ```
-    - `bcftools convert`
-    - `-O`: Output compressed BCF (b), uncompressed BCF (u), compressed VCF (z), uncompressed VCF (v). Use the -Ou option when piping between bcftools subcommands to speed up performance by removing unnecessary compression/decompression and VCF<->BCF conversion.
+    - `bcftools convert` vcf/bcf/gvcf
+    - `-O`: Output compressed BCF (b), uncompressed BCF (u), compressed VCF (z), uncompressed VCF (v). Use the -Ou option when piping between bcftools; subcommands to speed up performance by removing unnecessary compression/decompression and VCF<->BCF conversion. [Size comparison](https://github.com/davetang/learning_vcf_file#comparing-output-types)
   - consensus sequence from VCF, usually better to have input vcf normalized (indel left aligned with `bcftools norm --fasta-ref`)
     ```
     samtools faidx ref.fa 8:11870-11890 | bcftools consensus in.vcf.gz > out.fa
     ```
-  - filter hom-ref from a VCF (TODO: understand why whatshap outputs those in the first place), gives you any site where at least one sample has an alt.
+  - filter hom-ref from a VCF, gives you any site where at least one sample has an alt.
     ```
     bcftools view -i 'GT[*]="alt"' input.vcf
     ```
