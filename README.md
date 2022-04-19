@@ -34,6 +34,11 @@ The repo is a collection of simple code snippets that I often forget..
   - [centering diverging cmap](http://chris35wills.github.io/matplotlib_diverging_colorbar/)
   - [adding hatches to a heatmap/clustermap](https://stackoverflow.com/questions/55285013/adding-hatches-to-seaborn-heatmap-plot); note the use of `np.ma` module!
   - [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar). If to draw a scatterplot with categorized colors from a column, just use `col.map(color_dict)` in which `color_dict` is a preset mapping of colors, usually taking from [company's visual guide](https://illumina-playbook.webflow.io/visual-system#color). 
+    ```
+    ilmn = ['#E91207','#ED8B00', '#FFB81C', '#DE1B76', '#7D55C7', '#0077C8']
+    sns.palplot(sns.color_palette(gyr))
+    plt.scatter(...., c=[sns.color_palette(ilmn)[x] for x in df.colname.map(CMAPDICT)]))
+    ```
   - [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
   - [Extendable quick QC plot on tabular metrics file](https://gist.github.com/hurrialice/9771dd82bd334363b8746fdcb91c88cd)
 
