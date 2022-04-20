@@ -36,7 +36,7 @@ The repo is a collection of simple code snippets that I often forget..
   - [discrete color codes](https://www.python-graph-gallery.com/197-available-color-palettes-with-matplotlib). I am still trying to find an elegant way to annotate colors but [this question might be relevant](https://stackoverflow.com/questions/14777066/matplotlib-discrete-colorbar). If to draw a scatterplot with categorized colors from a column, just use `col.map(color_dict)` in which `color_dict` is a preset mapping of colors, usually taking from [company's visual guide](https://illumina-playbook.webflow.io/visual-system#color). 
     ```
     ilmn = ['#E91207','#ED8B00', '#FFB81C', '#DE1B76', '#7D55C7', '#0077C8']
-    sns.palplot(sns.color_palette(gyr))
+    sns.palplot(sns.color_palette(ilmn)) # show colors
     plt.scatter(...., c=[sns.color_palette(ilmn)[x] for x in df.colname.map(CMAPDICT)]))
     ```
   - [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
@@ -75,6 +75,7 @@ The repo is a collection of simple code snippets that I often forget..
     malt = '-'
     me = ms + len(mref) -1
     ```
+  - [bcftools expression syntax](https://samtools.github.io/bcftools/bcftools.html#expressions)
   - Working with VCF info flags (binary tag):
     - with `bcftools annotate`, explicitly include an additional column for 1/0/.; where as `.` denotes keeping existing flag
     - with `bcftools annotate`, use `-m <TAG>` to denote the presence of a TAG
