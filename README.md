@@ -41,6 +41,7 @@ The repo is a collection of simple code snippets that I often forget..
     ```
   - [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
   - [Extendable quick QC plot on tabular metrics file](https://gist.github.com/hurrialice/9771dd82bd334363b8746fdcb91c88cd)
+  - TODO: pairwise alignment dotplot plot for given read name
 
 ## General R (to be filled)
   - [Vannila R example for several statistical tests](https://gist.github.com/hurrialice/75ec1c321132ae052bce76a89ab9acb0), proficient use of `lapply` families, `split`, `unnest`, `Map`.
@@ -119,7 +120,8 @@ The repo is a collection of simple code snippets that I often forget..
 
 ## IGV
   - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
-  - [visualizing Pacbio long reads in IGV](https://www.youtube.com/watch?v=nLpmeD57ToA), alternatively [Ribbon](https://genomeribbon.com/)
+  - [visualizing Pacbio long reads in IGV](https://www.youtube.com/watch?v=nLpmeD57ToA)
+    - Note: [IGV handles long reads hardclip](https://github.com/igvteam/igv/issues/731) differently from short reads (appear to be a truncated magneta arrow) and it can be misleading! It makes more sense to make dotplot aligning reads to ref.
   - TODO: linked-reads display 
   - TODO: [Setting up AWS S3 to IGV](https://umccr.org/blog/igv-amazon-backend-setup/)
 
