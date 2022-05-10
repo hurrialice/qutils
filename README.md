@@ -14,6 +14,10 @@ The repo is a collection of simple code snippets that I often forget..
   - TODO: taking care of indices during merge / concat operations
   - `x in pd.Series` always returns `False`
   - `pd.Series([True, False, np.nan]).astype(bool)` will turn NA to True
+  - MultiIndex handling
+    - `adat.index = pd.MultiIndex.from_frame(<pd.dataframe>)`
+    - `adat.sort_index(level=['relationship','Subject ID']).sort_index(level = ["Dilution"], axis=1)` # reorder a multindex dataframe
+    - `adat2.reindex_like(adat1)` # reorder adat2 to adat1-matching indices with certain filling logic
 
 ### Numpy
   - Slicing
