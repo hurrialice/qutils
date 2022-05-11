@@ -7,6 +7,7 @@ For quick investigation of a few variants
 - [investigate TF & gene expression](http://cistrome.org/db/#/)
 - [Broad g2p portal](https://g2p.broadinstitute.org/) projects variants and categorical/continous feature to 3d structure
 - [position/naming convertion of variants](https://mutalyzer.nl/) in protein / rna /dna space
+- [simple clinvar](https://simple-clinvar.broadinstitute.org/)
 
 Misc
 - [find good times to meet w/ colleagues from multiple time zones](https://www.timeanddate.com/worldclock/meeting.html)
