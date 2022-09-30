@@ -45,6 +45,7 @@ The repo is a collection of simple code snippets that I often forget..
     ```
   - [custom legend](https://stackoverflow.com/questions/44098362/using-mpatches-patch-for-a-custom-legend)
   - [Extendable quick QC plot on tabular metrics file](https://gist.github.com/hurrialice/9771dd82bd334363b8746fdcb91c88cd)
+  - [twin axis with seaborn gridplot](https://stackoverflow.com/questions/65785304/using-ax-twinx-with-sns-facetgrid-and-sns-lineplot)
   - TODO: pairwise alignment dotplot plot for given read name
 
 ## General R (to be filled)
