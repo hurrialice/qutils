@@ -108,7 +108,8 @@ The repo is a collection of simple code snippets that I often forget..
     ```
     bcftools view -i 'GT[*]="alt"' input.vcf
     ```
-  - 'bcftools +mendelian' plugin option: '-l +' will remove any inconsistent records, '-d' will only mask `GT` field to `./.`
+  - `bcftools +mendelian` plugin option: `-l +` will remove any inconsistent records, `-d` will only mask `GT` field to `./.`
+  - make a `bedtools`-compatible genome file by `awk -v OFS='\t' {'print $1,$2'} ${reffa}.fai > ${reffa}.genome`
   - [MiniBAM](https://github.com/walaj/VariantBam)
 
 ### Alignments (BAM/CRAM)
