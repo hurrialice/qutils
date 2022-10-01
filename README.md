@@ -110,6 +110,14 @@ The repo is a collection of simple code snippets that I often forget..
     ```
   - `bcftools +mendelian` plugin option: `-l +` will remove any inconsistent records, `-d` will only mask `GT` field to `./.`
   - make a `bedtools`-compatible genome file by `awk -v OFS='\t' {'print $1,$2'} ${reffa}.fai > ${reffa}.genome`
+  - bcftools region option:
+  ```
+    -r, --regions <region>              restrict to comma-separated list of regions
+    -R, --regions-file <file>           restrict to regions listed in a file
+    -t, --targets [^]<region>           similar to -r but streams rather than index-jumps. Exclude regions with "^" prefix
+    -T, --targets-file [^]<file>        similar to -R but streams rather than index-jumps. Exclude regions with "^" prefix
+  ```
+  > Yet another difference between the two is that -r checks both start and end positions of indels, whereas -t checks start positions only.
   - [MiniBAM](https://github.com/walaj/VariantBam)
 
 ### Alignments (BAM/CRAM)
