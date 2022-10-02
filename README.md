@@ -138,8 +138,9 @@ The repo is a collection of simple code snippets that I often forget..
   - [visualizing Pacbio long reads in IGV](https://www.youtube.com/watch?v=nLpmeD57ToA)
     - Note: [IGV handles long reads hardclip](https://github.com/igvteam/igv/issues/731) differently from short reads (appear to be a truncated magneta arrow) and it can be misleading! It makes more sense to make dotplot aligning reads to ref.
   - [write IGV xml from a list of bam paths](https://gist.github.com/hurrialice/7527efbe7661a924bf8f70766c17e448) with `bash /usr/writeIGV.sh ~{reference_version} ~{sep=" " input_files} ~{sep=" " input_names_prefix}  > "~{file_name}.xml"`; [python equivalent](https://gist.github.com/hurrialice/ef2838cb82628801717eed40836e3ed5)
+  - Starting from IGV 2.13 it will stream s3 buckets from `[default]` profile
+  - Starting from IGV 2.14 it displays 5mC with better color code [TODO; add explanation here], quick visuals can be done with [methylation-artist](https://github.com/adamewing/methylartist)
   - TODO: linked-reads display 
-  - TODO: [Setting up AWS S3 to IGV](https://umccr.org/blog/igv-amazon-backend-setup/)
 
 ## Misc
   - [Kill Vscode remote on host](https://stackoverflow.com/questions/56892931/how-to-kill-vscode-remote-services-on-ubuntu-host) to emulate log out and log back in, otherwise it still runs as a background process
