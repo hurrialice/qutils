@@ -119,6 +119,31 @@ The repo is a collection of simple code snippets that I often forget..
   ```
   > Yet another difference between the two is that -r checks both start and end positions of indels, whereas -t checks start positions only.
   - [MiniBAM](https://github.com/walaj/VariantBam)
+  - Phasing
+    - Ways to phase variants: 
+      - statistical(popgen) phasing: beagle
+      - read-backed phasing: whatshap
+      - pedigree (parental scaffold) phasing: shapeit4??
+    - Compare two phased VCF with [whatshap compare](https://whatshap.readthedocs.io/en/latest/guide.html#whatshap-compare):
+      ```
+      whatshap compare --names ped,single\
+        --tsv-pairwise ${fam_id}_eval.tsv \
+        --sample ${proband_id} \
+        --longest-block-tsv ${fam_id}_longest-block.tsv \
+        <pvcf1> <pvcf2>
+      ```
+      And check `phase_agreeing` column from `longest-block-tsv`.
+    - switch error vs flip error (def=two switch errors in a row):
+      ```
+      A   B   C   D
+      0|1 0|1 0|1 0|1
+      0|1 0|1 0|1 0|1
+      0|1 1|0 1|0 1|0
+      1|0 0|1 1|0 0|1
+      1|0 0|1 1|0 1|0
+      ```
+      In this case, A<->B = 1 switch; A<->C = 1 flip; A<->D = 2 switches
+      
 
 ### Alignments (BAM/CRAM)
   - [Explaining read flags](https://broadinstitute.github.io/picard/explain-flags.html)
