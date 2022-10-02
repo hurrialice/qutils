@@ -95,8 +95,8 @@ The repo is a collection of simple code snippets that I often forget..
   - Compression (TODO: this part needs more work)
     - Compress and index a vcf
       ```
-      bgzip -c file.vcf > file.vcf.gz # or bcftools view file.vcf -Oz -o file.vcf.gz
-      tabix -p vcf file.vcf.gz # or bcftools index file.vcf.gz
+      bgzip file.vcf # or bcftools view file.vcf -Oz -o file.vcf.gz
+      tabix file.vcf.gz # or bcftools index file.vcf.gz
       ```
     - `bcftools convert` vcf/bcf/gvcf
     - `-O`: Output compressed BCF (b), uncompressed BCF (u), compressed VCF (z), uncompressed VCF (v). Use the -Ou option when piping between bcftools; subcommands to speed up performance by removing unnecessary compression/decompression and VCF<->BCF conversion. [Size comparison](https://github.com/davetang/learning_vcf_file#comparing-output-types)
