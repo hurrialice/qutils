@@ -11,6 +11,8 @@ The repo is a collection of simple code snippets that I often forget..
     - 
 ### Pandas
   - [Assign a column based on multiple conditions](https://gist.github.com/hurrialice/02f0460b88bc7a34b9b73717139c2a74)
+  - chromosome sorting done right:
+    `raw['chr'] = pd.Categorical(raw['chr'], categories=['chr'+str(x) for x in list(range(1,23))+list("XY")], ordered=False)`
   - TODO: taking care of indices during merge / concat operations
   - `x in pd.Series` always returns `False`
   - `pd.Series([True, False, np.nan]).astype(bool)` will turn NA to True
