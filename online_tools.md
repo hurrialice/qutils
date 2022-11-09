@@ -12,3 +12,4 @@ For quick investigation of a few variants
 
 Misc
 - [find good times to meet w/ colleagues from multiple time zones](https://www.timeanddate.com/worldclock/meeting.html)
+- [AWS policy generator](https://awspolicygen.s3.amazonaws.com/policygen.html)
