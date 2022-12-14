@@ -164,6 +164,7 @@ The repo is a collection of simple code snippets that I often forget..
   - [Get signed URL from GDC UUID](https://gist.github.com/hurrialice/fe3e1f02eaf1038968d6ed4d278a08bd)
   - [visualizing Pacbio long reads in IGV](https://www.youtube.com/watch?v=nLpmeD57ToA)
     - Note: [IGV handles long reads hardclip](https://github.com/igvteam/igv/issues/731) differently from short reads (appear to be a truncated magneta arrow) and it can be misleading! It makes more sense to make dotplot aligning reads to ref.
+    - [Tricks for IGV for long reads](https://github.com/igvteam/igv/issues/632) 
   - [write IGV xml from a list of bam paths](https://gist.github.com/hurrialice/7527efbe7661a924bf8f70766c17e448) with `bash /usr/writeIGV.sh ~{reference_version} ~{sep=" " input_files} ~{sep=" " input_names_prefix}  > "~{file_name}.xml"`; [python equivalent](https://gist.github.com/hurrialice/ef2838cb82628801717eed40836e3ed5)
   - Starting from IGV 2.13 it will stream s3 buckets from `[default]` profile
   - Starting from IGV 2.14 it displays 5mC with better color code [TODO; add explanation here], quick visuals can be done with [methylation-artist](https://github.com/adamewing/methylartist)
