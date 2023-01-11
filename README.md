@@ -145,7 +145,28 @@ The repo is a collection of simple code snippets that I often forget..
       1|0 0|1 1|0 1|0
       ```
       In this case, A<->B = 1 switch; A<->C = 1 flip; A<->D = 2 switches
-      
+   - Structural variants VCF with symbolic ALT (VCF4.3)
+   
+      ```
+      Symbolic alternate alleles are described as follows:
+
+      ##ALT=<ID=type,Description=description>
+
+      Structural Variants
+      In symbolic alternate alleles for imprecise structural variants, the ID field indicates the type of structural variant, and can be a colon-separated list of types and subtypes. ID values are case sensitive strings and must not contain whitespace or angle brackets. The first level type must be one of the following:
+
+      DEL Deletion relative to the reference
+      INS Insertion of novel sequence relative to the reference
+      DUP Region of elevated copy number relative to the reference
+      INV Inversion of reference sequence
+      CNV Copy number variable region (may be both deletion and duplication)
+      BND Breakend
+      The CNV category should not be used when a more specific category can be applied. Reserved subtypes include:
+
+      DUP:TANDEM Tandem duplication
+      DEL:ME Deletion of mobile element relative to the reference
+      INS:ME Insertion of a mobile element relative to the reference
+      ```
 
 ### Alignments (BAM/CRAM)
   - [Explaining read flags](https://broadinstitute.github.io/picard/explain-flags.html)
