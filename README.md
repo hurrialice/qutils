@@ -145,7 +145,7 @@ The repo is a collection of simple code snippets that I often forget..
       1|0 0|1 1|0 1|0
       ```
       In this case, A<->B = 1 switch; A<->C = 1 flip; A<->D = 2 switches
-   - Structural variants VCF with symbolic ALT (VCF4.3)
+   - Structural variants VCF with symbolic ALT (VCF4.3) [symbolify ALT allele](https://gist.github.com/hurrialice/228d4a82f278a2384e48b1389bfdee1a)
    
       ```
       Symbolic alternate alleles are described as follows:
