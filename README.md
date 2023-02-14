@@ -56,6 +56,7 @@ The repo is a collection of simple code snippets that I often forget..
   - Tidyverse family of libraries (`dplyr`, `purrr`, ...)
   - `SummerizedExpriments` for efficient organization of assays, other reliable `Bioconductor` packages
   - `ggplot2` family of bioinformatics related plotting
+  - `.rs.restartR()` to restart R session from console (with proper backup of enviroment variables)
 
 ## NGS manipulation
 
