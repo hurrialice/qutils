@@ -14,3 +14,4 @@ Misc
 - [find good times to meet w/ colleagues from multiple time zones](https://www.timeanddate.com/worldclock/meeting.html)
 - [AWS policy generator](https://awspolicygen.s3.amazonaws.com/policygen.html)
 - [Nimble json viewer](http://jsonviewer.stack.hu/)
+- [ucsc table browser](http://genome.ucsc.edu/cgi-bin/hgTables)
