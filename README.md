@@ -31,6 +31,7 @@ The repo is a collection of simple code snippets that I often forget..
 ### Matplotlib
   - [GaddyGram from aggregated MAF](https://gist.github.com/hurrialice/a01d8c0a758856e2ebac22363db703a1)
   - [Upset plot comparing calls from different sources](https://gist.github.com/hurrialice/43812e5df996c2abce3dd2578cb13d58)
+  - [aws cli settings](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html)
   - Add y=x to existing figure without changing axis
     ```
     x = np.linspace(*ax.get_xlim())
