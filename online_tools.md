@@ -9,6 +9,7 @@ For quick investigation of a few variants
 - [position/naming convertion of variants](https://mutalyzer.nl/) in protein / rna /dna space
 - [simple clinvar](https://simple-clinvar.broadinstitute.org/)
 - [simple spliceAI loopup](https://spliceailookup.broadinstitute.org/)
+- [splice junction frequency lookup](https://kidsneuro.shinyapps.io/splicevault/)
 
 Misc
 - [find good times to meet w/ colleagues from multiple time zones](https://www.timeanddate.com/worldclock/meeting.html)
