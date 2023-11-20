@@ -8,7 +8,8 @@ The repo is a collection of simple code snippets that I often forget..
   - python requests library
     - [advanced use](https://docs.python-requests.org/en/latest/user/advanced/)
     - [pagination example](https://gist.github.com/hurrialice/0366d0d9bf573ec22e97bba3fb39011e) with generator
-    - 
+  - pytest framework
+    
 ### Pandas
   - [Assign a column based on multiple conditions](https://gist.github.com/hurrialice/02f0460b88bc7a34b9b73717139c2a74)
   - chromosome sorting done right:
@@ -199,3 +200,7 @@ The repo is a collection of simple code snippets that I often forget..
   - [Missing link to libcrypto openssl on OSX](https://gist.github.com/aklap/e885721ef15c8668ed0a1dd64d2ea1a7)
   - Length for chr1 is `249,250,621` in hg19; and `248,956,422` in hg38 
   - Misc notes on gene annotations: [Transcript Biotype](https://useast.ensembl.org/info/genome/genebuild/biotypes.html) and [gnomad gene constraints](https://blog.goldenhelix.com/new-annotation-gnomad/)
+  - [Truthsets]([20/09 17:20] Bekritsky, Mitch
+Phased HG002 VCFs are here: https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/HG002_NA24385_son/NISTv4.2.1/GRCh38/SupplementaryFiles/
+ like 1
+Index of /ReferenceSamples/giab/release/AshkenazimTrio/HG002_NA24385_son/NISTv4.2.1/GRCh38/SupplementaryFiles)
