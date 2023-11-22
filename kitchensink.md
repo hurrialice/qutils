@@ -5,6 +5,7 @@
 - `cut -f1 <vcf> | uniq`  check chromosome sorting
 - `jq` handles json IO/parsing and [the manual](https://stedolan.github.io/jq/manual/) is amazing! [More advanced examples](https://www.fabian-keller.de/blog/5-useful-jq-commands-parse-json-cli/)
 - `grep -A n "pattern"` look further down n line, `-B n`: look n line above
+- [SIGPIPE](https://www.pixelbeat.org/programming/sigpipe_handling.html)
 - [Bash comparison operators](https://linuxize.com/post/how-to-compare-strings-in-bash/#comparison-operators)
 
 ### Nextflow
